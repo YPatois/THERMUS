@@ -2,8 +2,7 @@ name: Lint
 
 on:
   push:
-    branches:
-      - ["dev4ywork"]
+    branches: ["dev4ywork"]
 
 # Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 #permissions:
