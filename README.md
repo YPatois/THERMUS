@@ -57,8 +57,8 @@ Particles set will be fetched from, in order, reading the first found:
 - $THERMUS/share/Thermus/particles/base/\<subset>.txt
 
 From a particle set, particles data will be fetched from, in order, reading the first found:
-- $CUSTOM_THERMUS_PARTICLES_DIR/particles/\<set>/\<particle>.txt
-- $PWD/particles/\<set>/\<particle>.txt
+- $CUSTOM_THERMUS_PARTICLES_DIR/myparticles/\<set>/\<particle>.txt
+- $PWD/myparticles/\<set>/\<particle>.txt
 - $THERMUS/share/Thermus/particles/\<set>/\<particle>.txt
 - $THERMUS/share/Thermus/particles/base/\<particle>.txt
 

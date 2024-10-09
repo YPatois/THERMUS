@@ -9,6 +9,7 @@
 - Stamped TXT set
 - Merging Boris changes
 - Merging Natasha changes
+- Checksum the distributed particle set
 
 ### Maybe
 - THERMUS and THERMUS_LIB
