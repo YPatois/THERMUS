@@ -111,6 +111,7 @@ void prediction(TString filename,Bool_t decayfix) {
     // -> Branch the fake experimental values
 
     TTMThermalFitBSQ fit(&set,&par,THERMUS+"/share/doc/Thermus/tests/prediction.txt");
+    fit.SetDecayChainFix(decayfix);
 
     // -> Turn off default quantum statistics and resonance width treatment
     if(!quantRes){
