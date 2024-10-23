@@ -730,8 +730,9 @@ void TTMParticleSet::GenerateBRatios(TTMParticle* parent)
                     temp_decays->AddLast(decay);
                   }
               } //else                  // V.Vovchenko (integrating decay chain for unstable particles)
-              if (!daughter->GetStable())    // V.Vovchenko (integrating decay chain for unstable particles)
+              if (!daughter->GetStable())     // V.Vovchenko (integrating decay chain for unstable particles)
                 {
+                  if ( fDecayChainFix && (not daughter->GetDecayChainProcessed()) ) GenerateBRatios(daughter);      // V.Vovchenko (integrating decay chain for unstable particles)
                   TList* daughter_decays = daughter->GetDecaySummary();
                   TIter d_next(daughter_decays);
                   TTMDecay* d_decay;
