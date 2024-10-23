@@ -54,6 +54,7 @@ TTMThermalModelBSQ* TTMThermalFitBSQ::GenerateThermalModel(TTMParticleSet *set)
   }
   fModel = new TTMThermalModelBSQ(set,fParm,fQStats,fWidth);
   fModel->SetExcludedVolume(fExclVol);
+  fModel->SetDecayChainFix(fDecayChainFix);
   return fModel;
 }
 

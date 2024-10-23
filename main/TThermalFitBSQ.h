@@ -36,7 +36,7 @@ using namespace std;
 class TTMThermalFitBSQ:public TTMThermalFit {
 
  protected:
-  
+  Bool_t fDecayChainFix;
   TTMParameterSetBSQ *fParm;	
   Bool_t fQStats;
   Bool_t fWidth;
@@ -51,6 +51,8 @@ class TTMThermalFitBSQ:public TTMThermalFit {
   TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, const char *file);
    
   ~TTMThermalFitBSQ();
+
+  void SetDecayChainFix(Bool_t x){ fDecayChainFix = x; }
 
   TTMParameterSetBSQ* GetParameterSet(){return fParm;}
 
