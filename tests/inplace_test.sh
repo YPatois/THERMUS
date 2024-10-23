@@ -25,7 +25,7 @@ fi
 # For each file in the result directory, test if it's same as in the expected directory
 for ff in `ls tests/results/*.txt`; do
   f=`basename $ff`
-  diff $TESTDIR/results/$f $TESTDIR/expected_results/$f
+  diff tests/results/$f $TESTDIR/expected_results/$f
   if [ $? -ne 0 ]; then
     echo "TEST FAILED for file $f"
     exit 1
