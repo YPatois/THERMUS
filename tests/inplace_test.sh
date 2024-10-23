@@ -7,7 +7,7 @@ RUN_THERMUS=$1
 TESTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
 
 # Remove old tests resulst
-rm -f $TESTDIR/results/*.txt
+rm -f tests/results/*.txt
 
 # Run test
 # $THERMUS is not yet defined
@@ -15,7 +15,7 @@ rm -f $TESTDIR/results/*.txt
 $RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/all_predictions.C -b -q'
 
 # If there are no results files, test failed
-if compgen -G "$TESTDIR/results/*.txt" > /dev/null; then
+if compgen -G "tests/results/*.txt" > /dev/null; then
     echo "Some results files were found"
 else
     echo "TEST FAILED: no results files were found"
@@ -23,7 +23,7 @@ else
 fi
 
 # For each file in the result directory, test if it's same as in the expected directory
-for ff in `ls $TESTDIR/results/*.txt`; do
+for ff in `ls tests/results/*.txt`; do
   f=`basename $ff`
   diff $TESTDIR/results/$f $TESTDIR/expected_results/$f
   if [ $? -ne 0 ]; then
