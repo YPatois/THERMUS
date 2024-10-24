@@ -16,9 +16,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
-
-    - name: Restore cached sources
-      id: cache
+    
+    - name: Restore Root sources
       uses: actions/cache/restore@v4
       with:
         path: root/${{env.ROOT_VERSION}}/src

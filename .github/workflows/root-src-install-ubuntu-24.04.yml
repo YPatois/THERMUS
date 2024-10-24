@@ -16,14 +16,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Cache Root sources
+        id: cache
         uses: actions/cache@v4
         with:
           path: root/${{env.ROOT_VERSION}}/src
           key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
-
-      - name: Create source directory
+      - if: ${{ steps.cache.cache-hit != 'true' }}
+        name: Create source directory
         run: mkdir -p root/${{env.ROOT_VERSION}}/src
-      - name: Get Root sources
+        name: Get Root sources
         run: wget https://root.cern/download/root_v${{env.ROOT_VERSION}}.source.tar.gz -P root/${{env.ROOT_VERSION}}/src
-      - name: Unpack Root sources
+        name: Unpack Root sources
         run: tar -xzf root/${{env.ROOT_VERSION}}/src/root_v${{env.ROOT_VERSION}}.source.tar.gz -C root/${{env.ROOT_VERSION}}/src
