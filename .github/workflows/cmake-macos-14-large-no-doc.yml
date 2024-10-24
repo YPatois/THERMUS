@@ -1,6 +1,6 @@
 # Worflow for the CMake project. Without documentation.
 # Saves a lot of time, as LaTeX installation is not needed.
-name: Macos no Tex doc full test
+name: Macos 14 large no Tex doc full test
 on:
   push:
     branches: [ "dev4ywork3" ]

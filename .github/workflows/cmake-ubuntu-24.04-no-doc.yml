@@ -1,12 +1,12 @@
 # Worflow for the CMake project. Without documentation.
 # Saves a lot of time, as LaTeX installation is not needed.
-name: Ubuntu no Tex doc full test
+name: Ubuntu 24.04 no Tex doc full test
 
 on:
   push:
-    branches: [ "dev4ywork3" ]
+    branches: [ "dev4ywork3_" ]
   pull_request:
-    branches: [ "dev4ywork3" ]
+    branches: [ "dev4ywork3_" ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -23,7 +23,8 @@ jobs:
     - name: Install root dependencies
       run: sudo apt install -y nlohmann-json3-dev liburing-dev
     - name: Download root
-      run: wget https://cern.ch/amadio/root/root_6.26.10_ubuntu22_amd64.deb
+      # FIXME: We need a root deb file
+      run: wget https://cern.ch/amadio/root/root_6.26.10_ubuntu24_amd64.deb
     - name: Install root
       run: sudo apt install -y ./root_6.26.10_ubuntu22_amd64.deb
     
