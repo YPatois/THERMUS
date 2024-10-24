@@ -1,0 +1,39 @@
+name: Cache install of Root sources
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: false
+
+env:
+  ROOT_VERSION: ${{ inputs.version || '6.26.14' }}
+
+jobs:
+  call-root-sources:
+    uses: ./.github/workflows/root-src-install-ubuntu-24.04.yml
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Root install
+        uses: actions/cache@v4
+        with:
+          path: root/${{env.ROOT_VERSION}}/${{ runner.os }}
+          key: ${{ runner.os }}-root-${{ env.ROOT_VERSION }}
+
+      - name: Create install directory
+        run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}
+      - name: Create build directory
+        run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+      - name: Configure build
+        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+        run: cmake ../src/root-${{env.ROOT_VERSION}} -Dall=ON -DCMAKE_INSTALL_PREFIX=../${{ runner.os }}
+      - name: Build root
+        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+        run: make -j2
+      - name: Install root
+        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+        run: make -j2 install
+        

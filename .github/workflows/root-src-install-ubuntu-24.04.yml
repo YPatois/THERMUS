@@ -19,7 +19,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: root/${{env.ROOT_VERSION}}/src
-          key: ${{ runner.os }}-root-${{ env.ROOT_VERSION }}
+          key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
 
       - name: Create source directory
         run: mkdir -p root/${{env.ROOT_VERSION}}/src
