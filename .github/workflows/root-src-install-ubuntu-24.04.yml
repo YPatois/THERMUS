@@ -21,6 +21,7 @@ jobs:
         with:
           path: root/${{env.ROOT_VERSION}}/src
           key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
+          lookup-only: true
 
       - name: Create source directory
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
