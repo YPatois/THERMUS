@@ -18,28 +18,29 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Restore cached sources
+      id: cache
       uses: actions/cache/restore@v4
       with:
         path: root/${{env.ROOT_VERSION}}/src
         key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
 
-      - name: Cache Root install
-        uses: actions/cache@v4
-        with:
-          path: root/${{env.ROOT_VERSION}}/${{ runner.os }}
-          key: ${{ runner.os }}-root-${{ env.ROOT_VERSION }}
+    - name: Cache Root install
+      uses: actions/cache@v4
+      with:
+        path: root/${{env.ROOT_VERSION}}/${{ runner.os }}
+        key: ${{ runner.os }}-root-${{ env.ROOT_VERSION }}
 
-      - name: Create install directory
-        run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}
-      - name: Create build directory
-        run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-      - name: Configure build
-        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-        run: cmake ../src/root-${{env.ROOT_VERSION}} -Dall=ON -DCMAKE_INSTALL_PREFIX=../${{ runner.os }}
-      - name: Build root
-        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-        run: make -j2
-      - name: Install root
-        working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-        run: make -j2 install
-        
+    - name: Create install directory
+      run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}
+    - name: Create build directory
+      run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+    - name: Configure build
+      working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+      run: cmake ../src/root-${{env.ROOT_VERSION}} -Dall=ON -DCMAKE_INSTALL_PREFIX=../${{ runner.os }}
+    - name: Build root
+      working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+      run: make -j2
+    - name: Install root
+      working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
+      run: make -j2 install
+      
