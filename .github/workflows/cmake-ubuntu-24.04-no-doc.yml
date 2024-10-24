@@ -4,15 +4,10 @@ name: Ubuntu 24.04 no Tex doc full test
 
 on:
   push:
-    branches: [ "dev4ywork3_" ]
-  pull_request:
-    branches: [ "dev4ywork3_" ]
-
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
 
 jobs:
+  call-root-sources:
+    uses: ./.github/workflows/root-src-install-ubuntu-24.04.yml
   build:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
@@ -20,14 +15,6 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-    - name: Install root dependencies
-      run: sudo apt install -y nlohmann-json3-dev liburing-dev
-    - name: Download root
-      # FIXME: We need a root deb file
-      run: wget https://cern.ch/amadio/root/root_6.26.10_ubuntu24_amd64.deb
-    - name: Install root
-      run: sudo apt install -y ./root_6.26.10_ubuntu22_amd64.deb
-    
     - uses: actions/checkout@v4
 
     - name: Inplace build

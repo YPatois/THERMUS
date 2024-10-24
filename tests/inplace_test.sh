@@ -51,6 +51,11 @@ for ff in `ls tests/results/*.txt`; do
 done
 
 if [ $NBF_FAILED -eq 1 ] || [ $RES_FAILED -eq 1 ]; then
+  env
+  root --version
+  cc --version
+  cpp --version
+
   echo "TEST FAILED"
   exit 1
 fi
