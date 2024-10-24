@@ -9,7 +9,8 @@ EXTRA_OPTIONS="$@"
 SCRIPTDIR=$BASEDIR/scripts
 
 # To run (maybe) faster for tests
-export CXXFLAGS="-O2 -march=native"
+#export CXXFLAGS="-O2 -march=native"
+#export CXXFLAGS="-ffp-contract=off"
 
 $SCRIPTDIR/inplace_build.sh $EXTRA_OPTIONS
 
