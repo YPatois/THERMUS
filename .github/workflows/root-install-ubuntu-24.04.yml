@@ -17,6 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+    - name: Restore cached sources
+      uses: actions/cache/restore@v4
+      with:
+        path: root/${{env.ROOT_VERSION}}/src
+        key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
+
       - name: Cache Root install
         uses: actions/cache@v4
         with:
