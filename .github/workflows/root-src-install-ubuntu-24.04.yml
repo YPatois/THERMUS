@@ -23,13 +23,13 @@ jobs:
           key: ${{ runner.os }}-root-src-${{ env.ROOT_VERSION }}
 
       - name: Create source directory
-        if: ${{ steps.cache.cache-hit != 'true' }}
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: mkdir -p root/${{env.ROOT_VERSION}}/src
      
       - name: Get Root sources
-        if: ${{ steps.cache.cache-hit != 'true' }}
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: wget https://root.cern/download/root_v${{env.ROOT_VERSION}}.source.tar.gz -P root/${{env.ROOT_VERSION}}/src
     
       - name: Unpack Root sources
-        if: ${{ steps.cache.cache-hit != 'true' }}
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: tar -xzf root/${{env.ROOT_VERSION}}/src/root_v${{env.ROOT_VERSION}}.source.tar.gz -C root/${{env.ROOT_VERSION}}/src
