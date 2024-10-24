@@ -46,11 +46,11 @@ jobs:
       run: mkdir -p root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
     - name: Configure build
       working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-      run: cmake ../src/root-${{env.ROOT_VERSION}} -DCMAKE_INSTALL_PREFIX=../${{ runner.os }} -DVERBOSE=ON
+      run: cmake ../src/root-${{env.ROOT_VERSION}} -DCMAKE_INSTALL_PREFIX=../${{ runner.os }} -DVERBOSE=ON -DCMAKE_VERBOSE_MAKEFILE=ON
     - name: Build root
       working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-      run: make -j2
+      run: make
     - name: Install root
       working-directory: root/${{env.ROOT_VERSION}}/${{ runner.os }}-build
-      run: make -j2 install
+      run: make install
       
