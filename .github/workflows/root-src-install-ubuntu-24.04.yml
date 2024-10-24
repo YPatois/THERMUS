@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Cache Root sources
         uses: actions/cache@v4
         with:
@@ -26,4 +26,4 @@ jobs:
       - name: Get Root sources
         run: wget https://root.cern/download/root_v${{env.ROOT_VERSION}}.source.tar.gz -P root/${{env.ROOT_VERSION}}/src
       - name: Unpack Root sources
-        run: tar -xzf root/${{env.ROOT_VERSION}}/root_v${{env.ROOT_VERSION}}.source.tar.gz -C root/${{env.ROOT_VERSION}}/src
+        run: tar -xzf root/${{env.ROOT_VERSION}}/src/root_v${{env.ROOT_VERSION}}.source.tar.gz -C root/${{env.ROOT_VERSION}}/src
