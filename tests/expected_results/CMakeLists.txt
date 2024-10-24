@@ -1,9 +1,9 @@
 # CMakeLists.txt in test/expected_results
 
 if(${CMAKE_SYSTEM} MATCHES Darwin)
-    SET(FLIST result_0.txt result_1.txt current_fit_lhc5020_fit_test_arm.txt)
+    file(RENAME current_fit_lhc5020_fit_test_arm.txt current_fit_lhc5020_fit_test.txt)
 else(${CMAKE_SYSTEM} MATCHES Darwin)
-    SET(FLIST result_0.txt result_1.txt current_fit_lhc5020_fit_test.txt)
+    file(RENAME current_fit_lhc5020_fit_test_x86_64.txt current_fit_lhc5020_fit_test.txt)
 endif(${CMAKE_SYSTEM} MATCHES Darwin)
 
 
