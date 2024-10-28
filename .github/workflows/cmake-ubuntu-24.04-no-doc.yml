@@ -4,6 +4,7 @@ name: Ubuntu 24.04 no Tex doc full test
 
 on:
   push:
+    branches: [ "dev4ywork3_" ]
 
 jobs:
   call-root-sources:
