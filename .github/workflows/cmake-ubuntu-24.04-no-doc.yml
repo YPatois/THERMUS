@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Restest SYSROOT
-      run: ls -l $SYSROOT/bin/thisroot.sh
+      run: ls -l $SYSROOT/bin
 
     - name: Inplace build
       run: source $SYSROOT/bin/thisroot.sh && ${{github.workspace}}/scripts/inplace_build.sh -DWITHOUT_TEX_DOC=ON
