@@ -120,9 +120,8 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
   // Specify excluded volume, quantum statistics and resonance width treatments
   fit.SetExclVol(volCor);
   fit.SetQStats(quantRes);
-  fit.SetExclVol(volCor);
-  fit.SetQStats(quantRes);
   fit.SetWidth(quantRes);
+
    // -> Switch condition for ratios and yields exclusions
 
     //save
@@ -130,6 +129,8 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     
   // specific conditions for Pb-Pb
    fit.GetYield(313,0,"ALICE")->Predict();                   //K*
+   fit.GetYield(333,0,"ALICE")->Predict();                   //phi
+
   // fit.GetYield(2212,0,"ALICE")->Predict();                  //p
   // fit.GetYield(-2212,0,"ALICE")->Predict();
   // fit.GetYield(211,0,"ALICE")->Predict();                   //pi+
