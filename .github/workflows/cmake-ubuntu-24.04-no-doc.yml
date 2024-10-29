@@ -26,8 +26,9 @@ jobs:
     - name: Check root bin
       run: ls -l root/bin
     - name: Set SYSROOT
-      run: echo "SYSROOT=$PWD/root" >> $GITHUB_ENV
-    
+      run: echo "SYSROOT="`pwd`"/root" >> $GITHUB_ENV
+    - nam: Test SYSROOT
+      run: ls -l $SYSROOT
     - uses: actions/checkout@v4
 
     - name: Inplace build
