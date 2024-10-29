@@ -29,7 +29,14 @@ jobs:
       run: echo "SYSROOT="`pwd`"/root" >> $GITHUB_ENV
     - name: Test SYSROOT
       run: ls -l $SYSROOT/bin
+
+    - name: Echo SYSROOT
+      run: echo $SYSROOT
+
     - uses: actions/checkout@v4
+
+    - name: Echo SYSROOT
+      run: echo $SYSROOT
 
     - name: Restest SYSROOT
       run: ls -l $SYSROOT/bin
