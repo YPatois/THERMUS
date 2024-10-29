@@ -51,6 +51,8 @@ TTMThermalFitBSQ::TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par,
 //__________________________________________________________________________
 TTMThermalModelBSQ* TTMThermalFitBSQ::GenerateThermalModel(TTMParticleSet *set)
 {
+  std::cout << "TTMThermalFitBSQ::GenerateThermalModel()" << std::endl;
+  Dumpy();
   if(fModel){
     delete fModel;
   }
@@ -58,6 +60,16 @@ TTMThermalModelBSQ* TTMThermalFitBSQ::GenerateThermalModel(TTMParticleSet *set)
   fModel->SetExcludedVolume(fExclVol);
   fModel->SetDecayChainFix(fDecayChainFix);
   return fModel;
+}
+
+void TTMThermalFitBSQ::Dumpy() const
+{
+  TTMThermalFitBSQ::Dump();
+  if (fPartSet) fPartSet->Dump();
+  if (fYields) fYields->Dump();
+  if (fMinuit) fMinuit->Dump();
+  if (fParm) fParm->Dump();
+  if (fModel) fModel->Dump();
 }
 
 //__________________________________________________________________________

@@ -22,7 +22,6 @@
 #include "TH2.h"
 #include "TStopwatch.h"
 
-
 #endif
 
 /*
@@ -40,6 +39,9 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     t.Start();
     
     Int_t  gDebugMode=1;
+
+
+  //std::cout << "toto" << std::endl;
   // **************************************************
   // First, definition the particle list and their properties (and decays):
   // TTMParticleSet set("THERMUS/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
@@ -47,6 +49,12 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     TTMParticleSet set("particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
     set.InputDecays("particles");  // here true means the decays are scaled to sum(BR) = 100%
   
+  //set.Dumpy();
+
+  //for (Int_t i = 400; i < 420; i++) {
+  //  set.ListParticle(i);
+ // }
+
   if (volCor) set.SetRadii(0.3); // to be discussed, see personal notes
   
   // **************************************************
@@ -125,6 +133,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
 
    // -> Switch condition for ratios and yields exclusions
 
+
     //save
     TString fileOutName = "./tests/results/current_fit_lhc5020_fit_test.txt";
     
@@ -156,12 +165,12 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
    fit.GetYield(421,0,"ALICE")->Predict();            //D0
    fit.GetYield(413,0,"ALICE")->Predict();            //D*+
 
-  
+  //fit.Dumpy();
+
   if(gDebugMode) printf("INFO: now generate Yields\n");
   fit.GenerateYields();
-  
 
-
+ 
   if(gDebugMode) fit.ListYields();
   
   if (gDebugMode==2) return gDebugMode;
@@ -170,7 +179,10 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
   printf("INFO: finally we performe a chi2 fit\n"); // means FitData(0) (for Quadratic dev fit -> 1)
   
   fit.FitData(0);
-  
+
+  //fit.Dumpy();
+
+
   fit.GetParameterSet()->List();
   if(gDebugMode){
     printf("INFO: print the output of MINUIT !! \n");
@@ -195,6 +207,8 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     
   printf("  ****************************************************************************** \n");
 
+  //fit.Dumpy();
+
   if(gsfixed) printf("INFO: gamma_s was fixed to unity \n");
   else printf("INFO: gamma_s was a free parameter \n");
   if(volCor) printf("INFO: volume corrections were included \n");
@@ -209,7 +223,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     Float_t volume_lo = (4*3.1416/3.)*(radius-radiusError)*(radius-radiusError)*(radius-radiusError);
     if (radius) printf("INFO: radius = %.2f +- %.2f fm, volume = %.0f +%.0f -%.0f fm^3 \n",radius,radiusError,volume,volume_hi-volume,volume-volume_lo);
 
-    
+    //fit.Dumpy();
     if(rWrite){
     Bool_t saveOk = mySaveFitParameters(fileOutName, fit);
     
@@ -220,7 +234,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
     
     t.Stop();
     t.Print();
-    
+  //if (0) fit.Dumpy();
   return gDebugMode;
 }
 
@@ -372,3 +386,12 @@ Int_t mySaveFitParameters(TString &fileOutName,
   
   return true;
 }
+
+#if !defined(__CLING__) || defined(__ROOTCLING__)
+
+int main(void) {
+  lhc5020_fit_charm();
+  return 0;
+}
+
+#endif

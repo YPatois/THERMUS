@@ -34,7 +34,7 @@ TTMParticle::TTMParticle()
 }
 
 //__________________________________________________________________________
-TTMParticle::TTMParticle(const TTMParticle &obj)
+TTMParticle::TTMParticle(const TTMParticle &obj) : TNamed(obj)
 {
   fPartName = obj.GetPartName();
   SetID(obj.GetID());
@@ -460,6 +460,26 @@ TTMParticle& TTMParticle::operator=(const TTMParticle& obj)
   UpdateDecaySummary();
  
   return *this;
+}
+
+void TTMParticle::Dumpy() const {
+  Dump();
+
+  // Dump all the channels
+  std::cout << "Dumping all the channels <TTMDecayChannel>" << std::endl;
+  TIter next(fDecayChannels);
+  TTMDecayChannel *ch;
+  while ((ch=(TTMDecayChannel*)next())) {
+    ch->Dump();
+  }
+
+  // Dump all the decays
+  std::cout << "Dumping all the decays <TTMDecay>" << std::endl;
+  TIter nextd(fDecaySummary);
+  TTMDecay *d;
+  while ((d=(TTMDecay*)nextd())) {
+    d->Dump();
+  }
 }
 
 //__________________________________________________________________________

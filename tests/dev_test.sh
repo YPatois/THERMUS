@@ -9,6 +9,7 @@ EXTRA_OPTIONS="$@"
 SCRIPTDIR=$BASEDIR/scripts
 
 # To run (maybe) faster for tests
+#export CXXFLAGS="-O0"
 #export CXXFLAGS="-O2 -march=native"
 #export CXXFLAGS="-ffp-contract=off"
 

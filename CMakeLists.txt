@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 3.21 FATAL_ERROR)
 project (Thermus VERSION 4.0.0)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 # Find GSL
 FIND_PACKAGE( GSL REQUIRED )
 if ( NOT GSL_FOUND )
@@ -14,7 +16,7 @@ endif ( NOT GSL_FOUND )
 #endif ( NOT xxHash_FOUND )
 
 # Check ROOT and Mathmore
-FIND_PACKAGE( ROOT REQUIRED COMPONENTS MathMore )
+FIND_PACKAGE( ROOT REQUIRED COMPONENTS EG RIO MathMore )
 if ( NOT ROOT_FOUND )
 message(FATAL_ERROR "ROOT is required but missing !")
 endif ( NOT ROOT_FOUND )
@@ -28,6 +30,7 @@ set(CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR}/Thermus)
 include(${ROOT_USE_FILE})
 
 include_directories("include" "main" ${ROOT_INCLUDE_DIRS} ${GSL_INCLUDE_DIRS})
+link_directories(${ROOT_LIBRARY_DIR})
 
 if (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
 set(CMAKE_SHARED_LIBRARY_SUFFIX .so)

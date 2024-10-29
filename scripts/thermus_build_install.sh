@@ -32,7 +32,7 @@ mkdir -p build
 
 # Invoque cmake in build directory
 cmake -Wdev --debug-output -DCMAKE_VERBOSE_MAKEFILE=ON -B build -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR $EXTRA_OPTIONS
-cmake --build build --parallel $nproc
+cmake --build build --parallel $nproc 
 cmake --install build
 
 # List installed files

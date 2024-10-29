@@ -84,6 +84,8 @@ class TTMParticleSet:public TObject {
 
   TTMParticleSet& operator=(const TTMParticleSet& obj);
 
+  void Dumpy() const;
+
   ClassDef(TTMParticleSet,1) // A collection of particles
 
 };

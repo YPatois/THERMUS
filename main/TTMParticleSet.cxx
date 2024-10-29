@@ -39,7 +39,7 @@ TTMParticleSet::TTMParticleSet()
 }
 
 //__________________________________________________________________________
-TTMParticleSet::TTMParticleSet(const TTMParticleSet &obj, const Bool_t decaychainfix)
+TTMParticleSet::TTMParticleSet(const TTMParticleSet &obj, const Bool_t decaychainfix) : TObject()
 {
   fDecayChainFix=decaychainfix;
   fPartTable = new THashTable();
@@ -959,6 +959,20 @@ void TTMParticleSet::SetRadii(Double_t radius)
       part->SetRadius(radius);
   }
   
+}
+
+void TTMParticleSet::Dumpy() const {
+  Dump();
+
+  // Dump all the particles
+  std::cout << "Dumping all the particles <TTMParticle>" << std::endl;
+  TIter next(fPartTable);
+  TTMParticle *part;
+  while ((part=(TTMParticle*)next())) {
+    std::cout << "----" << std::endl;
+    part->Dumpy();
+  }
+  std::cout << "</TTMParticle>" << std::endl;
 }
 
 //__________________________________________________________________________

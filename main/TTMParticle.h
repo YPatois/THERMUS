@@ -154,6 +154,8 @@ class TTMParticle: public TNamed{
 
   TTMParticle& operator=(const TTMParticle& obj);
 
+  void Dumpy() const;
+
   ClassDef(TTMParticle,1) // Particle object 
 
 };

@@ -65,6 +65,8 @@ class TTMThermalFitBSQ:public TTMThermalFit {
   Bool_t GetWidth(){return fWidth;}
   Bool_t GetExclVol(){return fExclVol;}
 
+  void Dumpy() const;
+
   ClassDef(TTMThermalFitBSQ,1) // Grand-Canonical thermal fit class
 
 };
