@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Install root and Thermus dependencies
-      run: sudo apt install -y nlohmann-json3-dev liburing-dev libgsl-dev libvdt-dev
+      run: sudo apt install -y nlohmann-json3-dev liburing-dev libgsl-dev libvdt-dev libtbb-dev
     - name: Create root dir
       run: mkdir ../root
     - name: Download root
