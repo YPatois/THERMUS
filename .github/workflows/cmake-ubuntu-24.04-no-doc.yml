@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-    - name: Install root dependencies
-      run: sudo apt install -y nlohmann-json3-dev liburing-dev
+    - name: Install root and Thermus dependencies
+      run: sudo apt install -y nlohmann-json3-dev liburing-dev libgsl-dev
     - name: Create root dir
       run: mkdir ../root
     - name: Download root
@@ -27,19 +27,8 @@ jobs:
       run: cd ../root/ && tar -axf root_v6.32.06.Linux-ubuntu24.04-x86_64-gcc13.2.tar.gz
     - name: Set SYSROOT
       run: cd ../root/ && echo "SYSROOT="`pwd`"/root" >> $GITHUB_ENV
-    - name: Test SYSROOT
-      run: ls -l $SYSROOT/bin
-
-    - name: Echo SYSROOT
-      run: echo $SYSROOT
 
     - uses: actions/checkout@v4
-
-    - name: Echo SYSROOT
-      run: echo $SYSROOT
-
-    - name: Restest SYSROOT
-      run: ls -l $SYSROOT/bin
 
     - name: Inplace build
       run: source $SYSROOT/bin/thisroot.sh && ${{github.workspace}}/scripts/inplace_build.sh -DWITHOUT_TEX_DOC=ON
