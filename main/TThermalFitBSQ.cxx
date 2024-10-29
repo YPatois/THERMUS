@@ -25,6 +25,7 @@ ClassImp(TTMThermalFitBSQ)
 //__________________________________________________________________________
 TTMThermalFitBSQ::TTMThermalFitBSQ():TTMThermalFit()
 {
+  fDecayChainFix = true;
   fDescriptor = "GCanonical";
   fParm = (TTMParameterSetBSQ *) 0;
   fQStats = true;
@@ -36,6 +37,7 @@ TTMThermalFitBSQ::TTMThermalFitBSQ():TTMThermalFit()
 //__________________________________________________________________________
 TTMThermalFitBSQ::TTMThermalFitBSQ(TTMParticleSet *set, TTMParameterSetBSQ *par, const char *file):TTMThermalFit() 
 {
+  fDecayChainFix = true;
   fDescriptor = "GCanonical";
   fParm = par;
   fPartSet = set;
@@ -54,6 +56,7 @@ TTMThermalModelBSQ* TTMThermalFitBSQ::GenerateThermalModel(TTMParticleSet *set)
   }
   fModel = new TTMThermalModelBSQ(set,fParm,fQStats,fWidth);
   fModel->SetExcludedVolume(fExclVol);
+  fModel->SetDecayChainFix(fDecayChainFix);
   return fModel;
 }
 

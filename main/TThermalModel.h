@@ -47,6 +47,7 @@ class TTMThermalModel:public TObject {
 
  protected:
 
+   Bool_t fDecayChainFix;		// See TTMParticleSet for details
    TTMParticleSet *fPartSet;	// pointer to particle set
    Bool_t fWidth;		// True if width is to be taken into account 
    THashTable *fDensTable;	// pointer to density hash table
@@ -90,10 +91,13 @@ class TTMThermalModel:public TObject {
    {
       fDensTable = new THashTable();
       fDensTable->SetOwner(kTRUE);
+      fDecayChainFix = true;
    }  
    
    ~TTMThermalModel();
    
+   void SetDecayChainFix(Bool_t x){fDecayChainFix = x;}
+
    virtual TTMParameterSet* GetParameterSet() = 0;
    
    void GenerateDecayPartDens();
