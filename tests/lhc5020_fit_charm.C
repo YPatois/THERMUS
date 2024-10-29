@@ -31,7 +31,7 @@ TGraph *myTwoSigmaContour;
 TGraph *myThreeSigmaContour;
 */
 //Int_t myDrawContours(TTMThermalFitBSQ &fitresult);
-Int_t mySaveFitParameters(char * fileOutName, TTMThermalFitBSQ &fitresult);
+Int_t mySaveFitParameters(TString &fileOutName, TTMThermalFitBSQ &fitresult);
 
 
 Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS = 0, Bool_t constrainMuQ = 1, Bool_t volCor = 0,  Bool_t quantRes = 1){
@@ -66,6 +66,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
    Double_t B=208, Q=82, Bover2Q = B/(2*Q); if(gDebugMode) printf("INFO: expected colliding system: Pb-Pb\n");
   // Double_t B=209, Q=83, Bover2Q = B/(2*Q); if(gDebugMode) printf("INFO: expected colliding system: p-Pb\n");
   Double_t muC = 0, gammac = 1;
+
   TTMParameterSetBSQ par(Tch,muB,muS,muQ,gammas,radius,muC,gammac);
   // **************************************************
   // Fourth, choice of parameter to fit or to fix
@@ -110,25 +111,25 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
   // Fifth, Create an instance of the Fit
   // -> Branch the experimental values
   //  TTMThermalFitBSQ fit(&set,&par,"rhic200_exp.txt");
-  char fileName[60] = "./test/lhc5020_final_0_single_charm.txt";
+  TString fileName = "./tests/lhc5020_final_0_single_charm.txt";
   //char fileName[60] = "./lhcAP_cleaned_no_anti.txt";
   
-  printf("INFO: ***** this is the input filename:  %s ***** \n",fileName);
+  printf("INFO: ***** this is the input filename:  %s ***** \n",fileName.Data());
 
   TTMThermalFitBSQ fit(&set,&par,fileName);
   // Specify excluded volume, quantum statistics and resonance width treatments
   fit.SetExclVol(volCor);
   fit.SetQStats(quantRes);
+  fit.SetExclVol(volCor);
+  fit.SetQStats(quantRes);
   fit.SetWidth(quantRes);
-  // -> Switch condition for ratios and yields exclusions
+   // -> Switch condition for ratios and yields exclusions
 
     //save
-    char fileOutName[100] = "./current_fit_lhc5020_fit_test.txt";
+    TString fileOutName = "./tests/results/current_fit_lhc5020_fit_test.txt";
     
   // specific conditions for Pb-Pb
    fit.GetYield(313,0,"ALICE")->Predict();                   //K*
-   fit.GetYield(333,0,"ALICE")->Predict();                   //phi
-
   // fit.GetYield(2212,0,"ALICE")->Predict();                  //p
   // fit.GetYield(-2212,0,"ALICE")->Predict();
   // fit.GetYield(211,0,"ALICE")->Predict();                   //pi+
@@ -157,6 +158,8 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
   if(gDebugMode) printf("INFO: now generate Yields\n");
   fit.GenerateYields();
   
+
+
   if(gDebugMode) fit.ListYields();
   
   if (gDebugMode==2) return gDebugMode;
@@ -278,15 +281,15 @@ Int_t myDrawContours(TTMThermalFitBSQ &fitresult){
   return accessOk;
 }
 */
-Int_t mySaveFitParameters(char * fileOutName,
+Int_t mySaveFitParameters(TString &fileOutName,
                           TTMThermalFitBSQ &fitresult){
     Int_t Ndf = 0;
     Float_t volCorvalue = 0.3;
     
-  printf("\n \nINFO: ***** this is the output filename:  %s ***** \n",fileOutName);
+  printf("\n \nINFO: ***** this is the output filename:  %s ***** \n",fileOutName.Data());
 
   TTMYield *lYield = 0;
-    Int_t idYields[16] = {211,321,310,2212,3122,3312,3334,313,333,1000010020,1010010030,-1010010030,1000020030,411,421,413};
+  Int_t idYields[16] = {211,321,310,2212,3122,3312,3334,313,333,1000010020,1010010030,-1010010030,1000020030,411,421,413};
   Int_t nCharges = 16;
 
   printf("  ****************************************************************************** \n");
