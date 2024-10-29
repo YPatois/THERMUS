@@ -2,6 +2,7 @@
 
 ## Needed for 4.0
 ### Still to do
+- LICENSE: use LGPLv2, as ROOT
 - Up to date doc (for install and use)
 - No documentation build by default
 - code beautifying (linter)
@@ -36,7 +37,6 @@ For now, kept as it is.
 ### Already done
 - build on macos (without doc)
 - roadmap as an md file
-
 
 ## Later
 - Fix xxHash test
