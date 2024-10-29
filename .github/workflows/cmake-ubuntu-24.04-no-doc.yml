@@ -20,9 +20,11 @@ jobs:
     - name: Install root dependencies
       run: sudo apt install -y nlohmann-json3-dev liburing-dev
     - name: Download root
-      run: wget https://root.cern/download/root_v6.32.06.Linux-ubuntu24.04-x86_64-gcc13.2.tar.gz
+      run: wget -q https://root.cern/download/root_v6.32.06.Linux-ubuntu24.04-x86_64-gcc13.2.tar.gz
     - name: Unpack root
-      run: tar -axvf root_v6.32.06.Linux-ubuntu24.04-x86_64-gcc13.2.tar.gz
+      run: tar -axf root_v6.32.06.Linux-ubuntu24.04-x86_64-gcc13.2.tar.gz
+    - name: Check root bin
+      run: ls -l root/bin
     - name: Set SYSROOT
       run: echo "SYSROOT=$PWD/root" >> $GITHUB_ENV
     
