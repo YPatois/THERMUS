@@ -27,7 +27,7 @@ jobs:
       run: ls -l root/bin
     - name: Set SYSROOT
       run: echo "SYSROOT="`pwd`"/root" >> $GITHUB_ENV
-    - nam: Test SYSROOT
+    - name: Test SYSROOT
       run: ls -l $SYSROOT
     - uses: actions/checkout@v4
 
