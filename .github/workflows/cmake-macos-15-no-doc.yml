@@ -3,10 +3,7 @@
 name: Macos 15 no Tex doc full test
 on:
   push:
-    branches: [ "dev4ywork3" ]
-  pull_request:
-    branches: [ "dev4ywork3" ]
-
+  
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
