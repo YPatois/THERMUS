@@ -5,7 +5,7 @@
 
 #if !defined(__CLING__) || defined(__ROOTCLING__)
 
-#include "TGraph.h"
+#include <TGraph.h>
 #include "TGraphErrors.h"
 #include "TMinuit.h"
 #include "TFile.h"
