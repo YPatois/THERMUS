@@ -3,8 +3,7 @@
 name: Macos 15 no Tex doc full test
 on:
   push:
-    branches: [ master ]
-
+  
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
