@@ -9,7 +9,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 2
-    - uses: DoozyX/clang-format-lint-action@v0.15.0
     - name: run clang-format
       run: clang-format --dry-run -Werror --files=.clang_files
     - name: run git clangformat
