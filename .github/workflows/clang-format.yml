@@ -10,4 +10,4 @@ jobs:
     - name: run clang-format
       run: clang-format --dry-run -Werror --files=.clang_files
     - name: run git clangformat
-      run: git clang-format-15 --diff HEAD~1
+      run: git clang-format-15 -h
