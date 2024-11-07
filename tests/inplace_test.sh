@@ -6,7 +6,7 @@ RUN_THERMUS=$1
 # Location of test files
 TESTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
 
-RESULTDIR="$TESTDIR/results"
+RESULTDIR=`pwd`/tests/results
 # Remove old tests resulst
 rm -f $RESULTDIR/*.txt
 
