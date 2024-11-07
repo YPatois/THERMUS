@@ -3,7 +3,8 @@
 name: Macos 13 no Tex doc full test
 on:
   push:
-
+    branches: [ "later" ]
+    
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
