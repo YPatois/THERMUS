@@ -1,4 +1,12 @@
-// Loop through all sets
+// a simple test macro for THERMUS Predictions
+// Explore several configurations
+
+// root[0] .L test/prediction.C++
+// root[1] prediction();
+
+// or simply:
+// root[0] .x test/prediction.C
+
 // Includes for Compilation
 #if !defined(__CLING__) || defined(__ROOTCLING__)
 #include "TTMParameterSetBSQ.h"

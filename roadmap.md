@@ -2,13 +2,13 @@
 
 ## Needed for 4.0
 ### Still to do
-- LICENSE: use LGPLv2, as ROOT
+- LICENSE: use GPL, to be compatible wirth GSL and Root.
 - Up to date doc (for install and use)
 - No documentation build by default
 - code beautifying (linter)
+- Code restructuring around models
 - Better test for TXT
 - Stamped TXT set
-- Merging Boris changes
 - Merging Natasha changes
 - Checksum the distributed particle set
 
@@ -22,6 +22,7 @@ We could also hardcode THERMUS_LIB in use_thermus.C, making it reusable on a giv
 For now, kept as it is.
 
 ### Already done:
+- Merging Boris changes
 - Fix rdict.pcm install
 - Fix particle install
 - LaTeX doc working (on Linux)
@@ -34,6 +35,10 @@ For now, kept as it is.
 
 
 ## Before next upstream push
+- Include lhc5020 tests
+- Tests on all working sets
+- restructure code
+
 ### Already done
 - build on macos (without doc)
 - roadmap as an md file
