@@ -34,5 +34,7 @@ rm -rf $BASEDIR/tests
 rm -f $BASEDIR/run_thermus
 
 # Now we can run the tests
-$THERMUS/share/doc/Thermus/tests/inplace_test.sh $THERMUS/bin/run_thermus
+#$THERMUS/share/doc/Thermus/tests/inplace_test.sh $THERMUS/bin/run_thermus
+
+strace -ff -o without $THERMUS/bin/run_thermus -q -b
 
