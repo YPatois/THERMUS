@@ -22,19 +22,10 @@ fi
 cp $TESTDIR/warning_destructive_dev_test.sh /tmp/warning_destructive_dev_test.sh
 
 # delete mostly everything, but the just generated install
-rm -rf $BASEDIR/build
-rm -rf $BASEDIRcmake
-rm -rf $BASEDIR/doc
-rm -rf $BASEDIR/functions
-rm -rf $BASEDIR/include
-rm -rf $BASEDIR/main
-rm -rf $BASEDIR/particles 
-rm -rf $BASEDIR/scripts
-rm -rf $BASEDIR/tests
-rm -f $BASEDIR/run_thermus
+$BASEDIR/warning_delete_lots.sh
 
 # Now we can run the tests
 #$THERMUS/share/doc/Thermus/tests/inplace_test.sh $THERMUS/bin/run_thermus
 
-strace -ff -o without $THERMUS/bin/run_thermus -q -b
+strace -ff -o with $THERMUS/bin/run_thermus -q -b
 
