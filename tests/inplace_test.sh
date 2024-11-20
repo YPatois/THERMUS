@@ -21,7 +21,7 @@ sed -n '/predicted values/,$p' $RESULTDIR/brut_result.txt > $RESULTDIR/result.tx
 rm $RESULTDIR/brut_result.txt # Needed as we count output files
 
 # LHC5020 test
-#$RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/lhc5020_fit_charm.C -b -q'
+$RUN_THERMUS '$THERMUS/share/doc/Thermus/tests/lhc5020_fit_charm.C -b -q'
 
 # If there are no results files, test failed
 if compgen -G "$RESULTDIR/*.txt" > /dev/null; then
