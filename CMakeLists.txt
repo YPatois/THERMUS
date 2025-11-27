@@ -20,6 +20,8 @@ if ( NOT ROOT_FOUND )
 message(FATAL_ERROR "ROOT is required but missing !")
 endif ( NOT ROOT_FOUND )
 
+include(${ROOT_USE_FILE})
+
 #GNU like structure
 include(GNUInstallDirs)
 # Put libs under Thermus in libdir
