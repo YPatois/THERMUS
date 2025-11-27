@@ -49,6 +49,9 @@ For now, kept as it is.
 - Local TXT files?
 - Automatic PDG upgrade?
 
+## Various
 
+- Building and testing for development:
+`./scripts/dev_test.sh`
 
 
