@@ -2,8 +2,10 @@
 # This file is not distributed, it is used to test THERMUS
 # before committing changes
 MASTERSCRIPTDIR=`dirname -- "$( readlink -f -- "$0"; )"`
-MASTERDIR=`dirname $TESTDIR`
-WORKDIR=$BASEDIR/install_test
+MASTERDIR=`dirname $MASTERSCRIPTDIR`
+WORKDIR=$MASTERDIR/install_test
+
+rm -rf $WORKDIR
 
 THERMUSGIT="https://github.com/YPatois/THERMUS"
 THERMUSBRANCH="dev4ywork6"
@@ -13,6 +15,7 @@ mkdir -p $WORKDIR/local
 mkdir -p $WORKDIR/tests
 cd $WORKDIR/src
 git clone $THERMUSGIT
+
 cd THERMUS
 git checkout $THERMUSBRANCH
 
