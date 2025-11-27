@@ -44,7 +44,7 @@ Int_t lhc5020_fit_charm(Bool_t rWrite = 1, Bool_t gsfixed = 1, Bool_t fitMuQandS
    // First, definition the particle list and their properties (and decays):
    // TTMParticleSet set("THERMUS/particles/PartList_PPB2014_CBHN.txt",true); // -> still OK !!!
    // set.InputDecays("THERMUS/particles");  // here true means the decays are scaled to sum(BR) = 100%
-   TTMParticleSet set("particles/PartList_PPB2014_CBHN.txt", true); // -> still OK !!!
+   TTMParticleSet set(THERMUS+"/share/Thermus/particles/PartList_PPB2014_CBHN.txt", true); // -> still OK !!!
    set.InputDecays("particles"); // here true means the decays are scaled to sum(BR) = 100%
 
    if (volCor)
