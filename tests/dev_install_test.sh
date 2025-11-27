@@ -7,7 +7,7 @@ WORKDIR=$MASTERDIR/install_test
 
 rm -rf $WORKDIR
 
-THERMUSGIT="https://github.com/YPatois/THERMUS"
+THERMUSGIT=$MASTERDIR
 THERMUSBRANCH="dev4ywork6"
 
 mkdir -p $WORKDIR/src
