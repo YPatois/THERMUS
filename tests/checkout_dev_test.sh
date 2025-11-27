@@ -26,5 +26,5 @@ rm -rf $WORKDIR/src
 
 export PATH=$WORKDIR/local/bin:$PATH
 
-$WORKDIR/local/share/doc/Thermus/tests/installed_test.sh
+$WORKDIR/local/share/doc/Thermus/tests/test_on_installed.sh
 
