@@ -25,13 +25,13 @@ const TString Setlistall[5] = {"PartList_PPB2002.txt", "PartList_PPB2014.txt", "
 TString Setlist[1] = {"PartList_PPB2014_CBHN.txt"};
 
 // Declaration of prediction function
-void prediction(TString filename = THERMUS + "/share/Thermus/particles/PartList_PPB2014_CBHN.txt");
+void prediction(TString filename = THERMUS + "/share/Thermus/particles/partlists/PartList_PPB2014_CBHN.txt");
 
 void all_predictions()
 {
    // Loop through all sets
    for (Int_t set = 0; set < 1; set++) {
-      TString filename = THERMUS + "/share/Thermus/particles/" + Setlist[set];
+      TString filename = THERMUS + "/share/Thermus/particles/partlists/" + Setlist[set];
       prediction(filename);
    }
 }
@@ -43,7 +43,7 @@ void prediction(TString filename)
    // First, definition the particle list
    // and their properties (and decays):
    TTMParticleSet set(filename, true);
-   set.InputDecays(THERMUS + "/share/Thermus/particles"); // here true means the decays are
+   set.InputDecays(THERMUS + "/share/Thermus/particles/default/"); // here true means the decays are
                                                           // scaled to sum(BR) = 100%
    // **************************************************
    // Second, choice of formalism:

@@ -1,4 +1,5 @@
 #!/bin/bash -x
+#set -e
 # Inplace test for THERMUS
 # As we don't know where run_thermus is located, we need to pass it as an argument
 RUN_THERMUS=$1
