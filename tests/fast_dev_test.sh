@@ -17,4 +17,3 @@ if [ $? -ne 0 ]; then
 fi
 
 $TESTDIR/inplace_test.sh $BASEDIR/run_thermus
-
