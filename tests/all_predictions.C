@@ -21,17 +21,36 @@ Bool_t debugMode = 1; // verbose with debugMode=1
 
 const TString Setlistall[5] = {"PartList_PPB2002.txt", "PartList_PPB2014.txt", "PartList_PPB2014_CBHN.txt",
                                "PartList_PPB2014_CBHN_fixed_saveQM14.txt", "PartList_PPB2018_CBHN.txt"};
-
+const TString Setlistmost[] = {"PartList_PPB2014_CBHN.txt",
+                               "PartList_PPB2014_CBHN_fixed_saveQM14.txt", "PartList_PPB2018_CBHN.txt"};
 TString Setlist[1] = {"PartList_PPB2014_CBHN.txt"};
 
 // Declaration of prediction function
 void prediction(TString filename = THERMUS + "/share/Thermus/particles/PartList_PPB2014_CBHN.txt");
 
-void all_predictions()
+void all_predictions(TString partlist)
 {
+   printf("INFO: Prediction for %s\n", partlist.Data());
+   return;
+   /*argc-=(argc>0); argv+=(argc>0); // skip program name argv[0] if present
+   option::Stats  stats(usage, argc, argv);
+   option::Option options[stats.options_max], buffer[stats.buffer_max];
+   option::Parser parse(usage, argc, argv, options, buffer);
+  
+   if (parse.error()) {
+      fprintf(stderr, "Try `%s --help'\n", argv[0]);
+      return 1;
+   }
+   if (options[HELP]) {
+      fprintf(stdout, "%s\n", usage);
+      return 0;
+   }
+   return 0;
+   */
    // Loop through all sets
    for (Int_t set = 0; set < 1; set++) {
-      TString filename = THERMUS + "/share/Thermus/particles/" + Setlist[set];
+      printf("INFO: Prediction for set %s\n", Setlist[set].Data());
+      TString filename = THERMUS + "/share/Thermus/particles/" + Setlistmost[set];
       prediction(filename);
    }
 }
